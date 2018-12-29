@@ -12,11 +12,11 @@
   <!--Articles principales title-->
   <app-htw-title-center [title]="'Articles principales'" ></app-htw-title-center>
 
-  <!--Article principale-->
+  <!--Articles principales-->
   <ng-container *ngFor="let in of counter(6); let i = index">
     <div class="row">
       <div class="col-md">
-        <app-htw-form-add-article [articleTypeRelativeToLook]="articleTypeRelativeToLook.Principale" [rank]="i + 1"></app-htw-form-add-article>
+        <app-htw-form-add-article (saveArticle)="onSaveArticle($event)" [lookArticleAssociation]="lookArticleAssociation.Principal" [rank]="i + 1"></app-htw-form-add-article>
       </div>
       <div class="col-md">
 
@@ -27,11 +27,11 @@
   <!--Articles secondaires title-->
   <app-htw-title-center [title]="'Articles secondaires'" ></app-htw-title-center>
 
-  <!--Article secondaire-->
+  <!--Articles secondaires-->
   <ng-container *ngFor="let in of counter(24); let i = index">
     <div class="row">
       <div class="col-md">
-        <app-htw-form-add-article [articleTypeRelativeToLook]="articleTypeRelativeToLook.Secondaire" [rank]="i + 1"></app-htw-form-add-article>
+        <app-htw-form-add-article (saveArticle)="onSaveArticle($event)" [lookArticleAssociation]="lookArticleAssociation.Secondary" [rank]="i + 1"></app-htw-form-add-article>
       </div>
       <div class="col-md">
 

@@ -1,18 +1,27 @@
 <div class="form-group">
-    <button type="submit" class="btn btn-warning mb-2">Importer image article {{articleTypeRelativeToLook}} {{rank}}</button>
+    <input #fileImageArticle type="file" (change)="onFileImageArticle($event)" style="display: none" accept=".png, .jpg, .jpeg">
+    <button type="submit" (click)="fileImageArticle.click()" class="btn btn-warning mb-2">Importer image article {{lookArticleAssociation | lowercase }} {{rank}}</button>
+    {{fileImageArticle.value | slice:0:40 }}
+    <img [src]="imageArticlePath"/>
 </div>
 <div class="form-group">
-    <input type="text" class="form-control" placeholder="Marque">
+    <input type="text" [(ngModel)]="article.brand" class="form-control" placeholder="Marque">
+    {{article.brand}}
 </div>
 <div class="form-group">
-    <input type="number" class="form-control" placeholder="Price">
+    <input type="number" [(ngModel)]="article.price" class="form-control" placeholder="Price">
+    {{article.price}}
 </div>
 <div class="form-group">
-    <input type="text" class="form-control" placeholder="Shopping site name">
+    <input type="text" [(ngModel)]="article.shoppingSiteName" class="form-control" placeholder="Shopping site name">
+    {{article.shoppingSiteName}}
 </div>
 <div class="form-group">
-    <input type="text" class="form-control" placeholder="Shopping url">
+    <input type="text" [(ngModel)]="article.shoppingUrl" class="form-control" placeholder="Shopping url">
+    {{article.shoppingUrl}}
 </div>
 <div class="form-group">
-    <input type="text" class="form-control" placeholder="Description">
+    <input type="text" [(ngModel)]="article.description" class="form-control" placeholder="Description">
+    {{article.description}}
 </div>
+<button type="button" (click)="onSave()" class="btn btn-primary btn-lg btn-block">Enregister</button>

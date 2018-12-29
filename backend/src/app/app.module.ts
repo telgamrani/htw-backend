@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { CoreModule } from './modules/core/core.module';
@@ -14,6 +15,7 @@ import { LookAddModule } from './modules/look-add/look-add.module';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     RoutingModule,
     CoreModule,
     LookListModule,
