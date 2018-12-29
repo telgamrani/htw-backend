@@ -1,0 +1,12 @@
+div.look-add {
+    margin: 20px 0px;
+}
+
+div.look-add .row {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+div.look-add .col-md {
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 20px 10px;
+}

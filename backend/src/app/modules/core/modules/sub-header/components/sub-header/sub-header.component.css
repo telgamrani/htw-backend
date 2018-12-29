@@ -1,0 +1,93 @@
+@media (min-width: 1000px) {
+    div.sub-header {
+        height: 450px;
+    }
+
+    div.sub-header-title {
+        position: absolute; 
+        top: 50%; 
+        left: 48%; 
+        transform: translate(-42%, -50%); 
+        font-size: 2.5rem;
+        padding: 2px 25px;
+    }
+
+    div.sub-header-sub-title {
+        position: absolute; 
+        bottom: 17%; 
+        left: 48.75%; 
+        transform: translate(-43.5%, -50%); 
+        font-size: 0.7rem;
+        padding: 2px 8px;
+    }
+}
+
+@media (max-width: 1000px) {
+    div.sub-header {
+        height: 350px;
+    }
+
+    div.sub-header-title {
+        position: absolute; 
+        top: 50%; 
+        left: 50%; 
+        transform: translate(-50%, -50%); 
+        font-size: 1.3rem;
+        padding: 2px 5px;
+    }
+
+    div.sub-header-sub-title {
+        position: absolute; 
+        bottom: 0%; 
+        left: 50%; 
+        transform: translate(-50%, -50%); 
+        font-size: 0.6rem;
+        padding: 2px 4px;
+    }
+}
+@media (max-width: 500px) {
+    div.sub-header {
+        height: 150px;
+    }
+
+    div.sub-header-title {
+        position: absolute; 
+        top: 50%; 
+        left: 45.5%; 
+        transform: translate(-45.5%, -50%); 
+        font-size: 0.8rem;
+        padding: 2px 2px;
+    }
+
+    div.sub-header-sub-title {
+        position: absolute; 
+        bottom: 0%; 
+        left: 45%; 
+        transform: translate(-45%, -50%); 
+        font-size: 0.45rem;
+        padding: 2px 2px;
+    }
+}
+
+div.sub-header {
+    position: relative;
+    user-select: none;
+}
+
+div.sub-header img {
+    height: 100%;
+    width: 100%;
+}
+
+div.sub-header-title {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: rgb(241, 241, 241);
+}
+
+div.sub-header-sub-title {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: rgb(241, 241, 241, 0.9);
+    user-select: none;
+}

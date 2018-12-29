@@ -1,0 +1,48 @@
+<div class="look">
+    <div class="row">
+
+        <div class="col-md-5 look-img-wrapper">
+            <a routerLink="/look/detail">
+                <img src="assets/look.jpg" class="look-img" />
+                <div *ngIf="moreChoiceButtonEnabled" class="look-more-choice">
+                    PLUS DE CHOIX
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md">
+
+            <div class="row article-img-row">
+
+                <div class="col-md">
+                  <app-htw-article></app-htw-article>
+                </div>
+
+                <div class="col-md">
+                    <app-htw-article></app-htw-article>
+                </div>
+
+                <div class="col-md">
+                    <app-htw-article></app-htw-article>
+                </div>
+
+            </div>
+            
+            <div class="row article-img-row">
+
+                <div class="col-md">
+                    <app-htw-article></app-htw-article>
+                </div>
+
+                <div class="col-md">
+                    <app-htw-article></app-htw-article>
+                </div>
+
+                <div class="col-md">
+                    <app-htw-article></app-htw-article>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

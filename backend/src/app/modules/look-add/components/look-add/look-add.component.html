@@ -1,0 +1,40 @@
+<div class="look-add">
+  <!--Look-->
+  <div class="row">
+    <div class="col-md">
+        <button type="submit" class="btn btn-warning mb-2">Importer image look</button>
+    </div>
+    <div class="col-md">
+
+    </div>
+  </div>
+
+  <!--Articles principales title-->
+  <app-htw-title-center [title]="'Articles principales'" ></app-htw-title-center>
+
+  <!--Article principale-->
+  <ng-container *ngFor="let in of counter(6); let i = index">
+    <div class="row">
+      <div class="col-md">
+        <app-htw-form-add-article [articleTypeRelativeToLook]="articleTypeRelativeToLook.Principale" [rank]="i + 1"></app-htw-form-add-article>
+      </div>
+      <div class="col-md">
+
+      </div>
+    </div>
+  </ng-container>
+
+  <!--Articles secondaires title-->
+  <app-htw-title-center [title]="'Articles secondaires'" ></app-htw-title-center>
+
+  <!--Article secondaire-->
+  <ng-container *ngFor="let in of counter(24); let i = index">
+    <div class="row">
+      <div class="col-md">
+        <app-htw-form-add-article [articleTypeRelativeToLook]="articleTypeRelativeToLook.Secondaire" [rank]="i + 1"></app-htw-form-add-article>
+      </div>
+      <div class="col-md">
+
+      </div>
+    </div>
+  </ng-container>

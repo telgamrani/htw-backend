@@ -1,0 +1,51 @@
+.look {
+    /*border: 1px solid red;*/
+}
+div.look-img-wrapper {
+    /*border: 1px solid goldenrod;*/
+    position: relative;
+    text-align: center;
+    margin: 20px 10px;
+}
+img.look-img {
+    /*border: 1px solid black;*/
+    height: 95%;
+    width: 100%;
+}
+.look .col , .look .col-md {
+    /*border: 1px solid salmon;*/
+}
+div.look-more-choice {
+    background-color: rgb(237, 168, 32);
+    text-transform: uppercase;
+    font-weight: 700;
+    width: 55%;
+    padding: 11px 1px;
+    position: absolute;
+    bottom: 25%;
+    left: 20%;
+    border-radius: 3px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color .45s ease .09s;
+}
+div.look-more-choice:hover {
+    background-color: rgba(255, 170, 1, 0.904);
+}
+@media (min-width: 350px) {
+    div.look-more-choice:before {
+        content: ">";
+        right: 12px;
+        top: -1px;
+        height: 100%;
+        width: 2.2em;
+        font-size: 1.7em;
+        display: flex;
+        position: absolute;
+        justify-content: flex-end;
+        align-items: center;
+        font-weight: 500;
+        line-height: 1;
+        z-index: 1;
+    }
+}

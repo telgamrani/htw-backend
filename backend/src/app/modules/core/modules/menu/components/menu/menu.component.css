@@ -1,0 +1,10 @@
+.nav {
+    width: 320px;
+    margin: 0px auto 60px auto;
+}
+
+.nav a {
+    color: #FFF;
+    font-weight: 700;
+    font-size: 15px;
+}

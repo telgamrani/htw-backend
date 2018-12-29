@@ -1,0 +1,19 @@
+
+ <div class="container-fluid"> 
+
+    <div class="header">
+        <app-htw-header></app-htw-header>
+    </div>
+
+    <app-htw-sub-header></app-htw-sub-header>
+
+    <div class="content-wrapper">
+
+        <!--<app-htw-look-list></app-htw-look-list>-->
+
+        <!--<app-htw-look-detail></app-htw-look-detail>-->
+
+        <router-outlet (activate)="onActivate($event)"></router-outlet>
+
+    </div>
+</div>
