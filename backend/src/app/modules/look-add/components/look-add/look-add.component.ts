@@ -5,6 +5,7 @@ import { AddLookRequest } from 'src/app/modules/shared/requests/add-look-request
 import { Look } from 'src/app/modules/shared/types/look.model';
 import { FileUtilService } from 'src/app/modules/shared/utils/file-util.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { JsonUtilService } from 'src/app/modules/shared/utils/json-util.service';
 
 @Component({
   selector: 'app-htw-look-add',
@@ -19,10 +20,15 @@ export class LookAddComponent implements OnInit {
 
   public lookArticleAssociation = LookArticleAssociation;
 
+  get addLookRequestJson() {
+    return this.sanitizer.bypassSecurityTrustHtml(this.jsonUtil.syntaxHighlight(JSON.stringify(this.addLookRequest, undefined, 4)));
+  }
+
   constructor(
     private sanitizer: DomSanitizer,
-    private fileUtil: FileUtilService
-    ) { }
+    private fileUtil: FileUtilService,
+    private jsonUtil: JsonUtilService
+  ) {}
 
   ngOnInit() {
     this.addLookRequest.look = new Look();
