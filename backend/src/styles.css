@@ -20,9 +20,9 @@ a, a:hover {
     text-decoration: inherit;
 }
 
-pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
+pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; font-weight: 700; font-size: 0.9rem;}
 .string { color: green; }
-.number { color: darkorange; }
+.number { color: rgb(17, 20, 18); }
 .boolean { color: blue; }
 .null { color: magenta; }
 .key { color: red; }

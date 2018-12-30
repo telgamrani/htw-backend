@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { LookArticleAssociation } from 'src/app/modules/shared/enums/look-article-association.enum';
+import { LookArticleAssociationType } from 'src/app/modules/shared/enums/look-article-association-type.enum';
 import { Article } from 'src/app/modules/shared/types/article.model';
 import { AddLookRequest } from 'src/app/modules/shared/requests/add-look-request.request';
 import { Look } from 'src/app/modules/shared/types/look.model';
 import { FileUtilService } from 'src/app/modules/shared/utils/file-util.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { JsonUtilService } from 'src/app/modules/shared/utils/json-util.service';
+import { LookService } from 'src/app/modules/shared/services/look.service';
 
 @Component({
   selector: 'app-htw-look-add',
@@ -18,7 +19,7 @@ export class LookAddComponent implements OnInit {
 
   imageLookPath: SafeResourceUrl;
 
-  public lookArticleAssociation = LookArticleAssociation;
+  public lookArticleAssociationType = LookArticleAssociationType;
 
   get addLookRequestJson() {
     return this.sanitizer.bypassSecurityTrustHtml(this.jsonUtil.syntaxHighlight(JSON.stringify(this.addLookRequest, undefined, 4)));
@@ -27,7 +28,8 @@ export class LookAddComponent implements OnInit {
   constructor(
     private sanitizer: DomSanitizer,
     private fileUtil: FileUtilService,
-    private jsonUtil: JsonUtilService
+    private jsonUtil: JsonUtilService,
+    private lookService: LookService
   ) {}
 
   ngOnInit() {
@@ -88,6 +90,11 @@ export class LookAddComponent implements OnInit {
     return foundIndex;
   }
 
-
+  sendAddLookRequest() {
+    this.lookService.addLook(this.addLookRequest).subscribe(
+      response => console.log('success add look'),
+      error => console.log('error add look')
+    );
+  }
 
 }

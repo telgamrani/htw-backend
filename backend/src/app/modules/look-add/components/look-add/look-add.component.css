@@ -10,3 +10,7 @@ div.look-add .col-md {
     border-right: 1px solid rgba(0, 0, 0, 0.2);
     padding: 20px 10px;
 }
+
+pre {
+    margin: 60px auto;
+}

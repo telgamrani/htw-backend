@@ -19,7 +19,7 @@
   <ng-container *ngFor="let in of counter(6); let i = index">
     <div class="row">
       <div class="col-md">
-        <app-htw-form-add-article (saveArticle)="onSaveArticle($event)" [lookArticleAssociation]="lookArticleAssociation.Principal" [rank]="i + 1"></app-htw-form-add-article>
+        <app-htw-form-add-article (saveArticle)="onSaveArticle($event)" [lookArticleAssociationType]="lookArticleAssociationType.Principal" [rank]="i + 1"></app-htw-form-add-article>
       </div>
       <div class="col-md">
         <app-htw-article [article]="getArticleByRank(i + 1)"></app-htw-article>
@@ -34,10 +34,10 @@
   <ng-container *ngFor="let in of counter(24); let i = index">
     <div class="row">
       <div class="col-md">
-        <app-htw-form-add-article (saveArticle)="onSaveArticle($event)" [lookArticleAssociation]="lookArticleAssociation.Secondary" [rank]="i + 1"></app-htw-form-add-article>
+        <app-htw-form-add-article (saveArticle)="onSaveArticle($event)" [lookArticleAssociationType]="lookArticleAssociationType.Secondary" [rank]="i + 1"></app-htw-form-add-article>
       </div>
       <div class="col-md">
-
+        <app-htw-article [article]="getArticleByRank(i + 1)"></app-htw-article>
       </div>
     </div>
   </ng-container>
@@ -46,3 +46,5 @@
   <app-htw-title-center [title]="'Add look request json'" ></app-htw-title-center>
 
   <pre [innerHTML]="addLookRequestJson"></pre>
+  
+  <button type="button" (click)="sendAddLookRequest()" class="btn btn-success btn-lg btn-block">Ajouter</button>

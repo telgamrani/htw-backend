@@ -1,4 +1,4 @@
-import { LookArticleAssociation } from '../enums/look-article-association.enum';
+import { LookArticleAssociationType } from '../enums/look-article-association-type.enum';
 
 export class Article {
 
@@ -18,7 +18,7 @@ export class Article {
 	
     price: number;
     
-    lookArticleAssociation: LookArticleAssociation;
+    lookArticleAssociationType: LookArticleAssociationType;
 
     rank: number;
 }

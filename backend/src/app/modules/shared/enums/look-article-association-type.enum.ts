@@ -1,4 +1,4 @@
-export enum LookArticleAssociation {
+export enum LookArticleAssociationType {
     Principal = 'PRINCIPAL',
     Secondary = 'SECONDARY',
 }
