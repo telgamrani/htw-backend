@@ -1,17 +1,17 @@
 <div class="article-wrapper">
     <a href="#">
         <div class="article-img-wrapper">
-            <img src="assets/veste.jpg" class="article-img"/>
+            <img width="90%" height="100%" *ngIf="imageArticlePath" [src]="imageArticlePath"/>
         </div>
         <div class="article-infos">
             <div class="row article-infos-row-1">
-                <div class="col article-infos-brand">River Island</div>
+                <div class="col article-infos-brand">{{article.brand}}</div>
             </div>
             <div class="row article-infos-row-2">
-                <div class="col"><span class="article-infos-price-whole-part">36</span>,95 €</div>
+                <div class="col"><span class="article-infos-price-whole-part">{{priceWholePart}}</span>,{{priceDecimalPart}} €</div>
             </div>
             <div class="row article-infos-row-3">
-                <div class="col">Chemise - black</div>
+                <div class="col">{{article.description}}</div>
             </div>
         </div>
     </a>

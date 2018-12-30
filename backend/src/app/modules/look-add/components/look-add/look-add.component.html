@@ -2,10 +2,13 @@
   <!--Look-->
   <div class="row">
     <div class="col-md">
-        <button type="submit" class="btn btn-warning mb-2">Importer image look</button>
+        <input #fileImageLook type="file" (change)="onFileImageLook($event)" style="display: none" accept=".png, .jpg, .jpeg">
+        <button type="submit" (click)="fileImageLook.click()" class="btn btn-warning mb-2">Importer image look</button> 
+        {{fileImageLook.value | slice:0:40 }}
+        <img width="120" height="120" *ngIf="imageLookPath" [src]="imageLookPath"/>
     </div>
     <div class="col-md">
-
+      <img width="100%" height="100%" *ngIf="addLookRequest.look.imgString" [src]="addLookRequest.look.imgString"/>
     </div>
   </div>
 
@@ -19,7 +22,7 @@
         <app-htw-form-add-article (saveArticle)="onSaveArticle($event)" [lookArticleAssociation]="lookArticleAssociation.Principal" [rank]="i + 1"></app-htw-form-add-article>
       </div>
       <div class="col-md">
-
+        <app-htw-article [article]="getArticleByRank(i + 1)"></app-htw-article>
       </div>
     </div>
   </ng-container>

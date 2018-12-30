@@ -2,7 +2,7 @@
     <input #fileImageArticle type="file" (change)="onFileImageArticle($event)" style="display: none" accept=".png, .jpg, .jpeg">
     <button type="submit" (click)="fileImageArticle.click()" class="btn btn-warning mb-2">Importer image article {{lookArticleAssociation | lowercase }} {{rank}}</button>
     {{fileImageArticle.value | slice:0:40 }}
-    <img [src]="imageArticlePath"/>
+    <img width="120" height="120" *ngIf="imageArticlePath" [src]="imageArticlePath"/>
 </div>
 <div class="form-group">
     <input type="text" [(ngModel)]="article.brand" class="form-control" placeholder="Marque">

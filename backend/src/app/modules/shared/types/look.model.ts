@@ -6,5 +6,7 @@ export class Look {
 
     imgUrl: string;
 
+    imgString: string;
+
     articles: Array<Article>;
 }

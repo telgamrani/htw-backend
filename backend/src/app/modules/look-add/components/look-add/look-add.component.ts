@@ -3,6 +3,8 @@ import { LookArticleAssociation } from 'src/app/modules/shared/enums/look-articl
 import { Article } from 'src/app/modules/shared/types/article.model';
 import { AddLookRequest } from 'src/app/modules/shared/requests/add-look-request.request';
 import { Look } from 'src/app/modules/shared/types/look.model';
+import { FileUtilService } from 'src/app/modules/shared/utils/file-util.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-htw-look-add',
@@ -13,9 +15,14 @@ export class LookAddComponent implements OnInit {
 
   addLookRequest = new AddLookRequest();
 
+  imageLookPath: SafeResourceUrl;
+
   public lookArticleAssociation = LookArticleAssociation;
 
-  constructor() { }
+  constructor(
+    private sanitizer: DomSanitizer,
+    private fileUtil: FileUtilService
+    ) { }
 
   ngOnInit() {
     this.addLookRequest.look = new Look();
@@ -26,26 +33,55 @@ export class LookAddComponent implements OnInit {
     return new Array(size);
   }
 
+  getArticleByRank(rank: number){
+
+    let article;
+
+    const foundIndex = this._getArticleIndexByRank(rank);
+
+    if(foundIndex > -1) {
+      article = this.addLookRequest.look.articles[foundIndex];
+    }
+
+    return article;
+  }
+
   onSaveArticle(article: Article) {
-    console.log('onSaveArticle : article ', JSON.stringify(article, undefined, 4));
-    console.log('article.imgFile', article.imgFile);
-    
-
     this._addOrUpdateArticleOnAddLookRequest(article);
-
     console.log('onSaveArticle : addlookRequest ', JSON.stringify(this.addLookRequest, undefined, 4));
   }
 
-  private _addOrUpdateArticleOnAddLookRequest(article: Article) {
-    let foundIndex = -1;
+  onFileImageLook(fileImageLook) {
+    this.fileUtil.convertFileToString(fileImageLook.target).then(
+      (response : string | ArrayBuffer) => {
+        this.addLookRequest.look.imgString = response.toString();
+        this.imageLookPath = this.sanitizer.bypassSecurityTrustUrl(this.addLookRequest.look.imgString.toString());
+      }
+    )
+  }
 
-    foundIndex = this.addLookRequest.look.articles.findIndex((a: Article) => a.rank === article.rank);
+  private _addOrUpdateArticleOnAddLookRequest(article: Article) {
+
+    if(!article) {
+      return;
+    }
+
+    const foundIndex = this._getArticleIndexByRank(article.rank);
 
     if(foundIndex > -1) {
       this.addLookRequest.look.articles[foundIndex] = article;
     } else {
       this.addLookRequest.look.articles.push(article);
     }
+    
   }
+
+  private _getArticleIndexByRank(rank: number): number {
+    let foundIndex = -1;
+    foundIndex = this.addLookRequest.look.articles.findIndex((a: Article) => a.rank === rank);
+    return foundIndex;
+  }
+
+
 
 }

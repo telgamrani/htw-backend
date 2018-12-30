@@ -14,6 +14,7 @@ export class FormAddArticleComponent implements OnInit {
   article = new Article();
 
   imageArticlePath: SafeResourceUrl;
+  articlePrice: number;
 
   @Input() rank: number;
   @Input() lookArticleAssociation: LookArticleAssociation;
@@ -31,14 +32,16 @@ export class FormAddArticleComponent implements OnInit {
   }
 
   onSave(){
-    this.saveArticle.emit(this.article);
+    let articleTmp = new Article();
+    articleTmp = Object.assign(articleTmp, this.article);
+    this.saveArticle.emit(articleTmp);
   }
 
   onFileImageArticle(fileImageArticle) {
     this.fileUtil.convertFileToString(fileImageArticle.target).then(
       (response : string | ArrayBuffer) => {
-        this.article.imgString = response;
-        this.imageArticlePath = this.sanitizer.bypassSecurityTrustUrl(''+this.article.imgString);
+        this.article.imgString = response.toString();
+        this.imageArticlePath = this.sanitizer.bypassSecurityTrustUrl(this.article.imgString.toString());
       }
     )
   }
