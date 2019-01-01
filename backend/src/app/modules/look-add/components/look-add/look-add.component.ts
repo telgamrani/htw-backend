@@ -41,11 +41,11 @@ export class LookAddComponent implements OnInit {
     return new Array(size);
   }
 
-  getArticleByRank(rank: number){
+  getArticleByRank(rank: number, lookArticleAssociationType: LookArticleAssociationType){
 
     let article;
 
-    const foundIndex = this._getArticleIndexByRank(rank);
+    const foundIndex = this._getArticleIndexByRank(rank, lookArticleAssociationType);
 
     if(foundIndex > -1) {
       article = this.addLookRequest.look.articles[foundIndex];
@@ -74,7 +74,7 @@ export class LookAddComponent implements OnInit {
       return;
     }
 
-    const foundIndex = this._getArticleIndexByRank(article.rank);
+    const foundIndex = this._getArticleIndexByRank(article.rank, article.lookArticleAssociationType);
 
     if(foundIndex > -1) {
       this.addLookRequest.look.articles[foundIndex] = article;
@@ -84,9 +84,9 @@ export class LookAddComponent implements OnInit {
     
   }
 
-  private _getArticleIndexByRank(rank: number): number {
+  private _getArticleIndexByRank(rank: number, lookArticleAssociationType: LookArticleAssociationType): number {
     let foundIndex = -1;
-    foundIndex = this.addLookRequest.look.articles.findIndex((a: Article) => a.rank === rank);
+    foundIndex = this.addLookRequest.look.articles.findIndex((a: Article) => a.rank === rank && a.lookArticleAssociationType === lookArticleAssociationType);
     return foundIndex;
   }
 
