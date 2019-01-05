@@ -41,7 +41,7 @@ export class LookAddComponent implements OnInit {
     return new Array(size);
   }
 
-  getArticleByRank(rank: number, lookArticleAssociationType: LookArticleAssociationType){
+  getArticleByRankAndLookArticleAssociationType(rank: number, lookArticleAssociationType: LookArticleAssociationType){
 
     let article;
 
