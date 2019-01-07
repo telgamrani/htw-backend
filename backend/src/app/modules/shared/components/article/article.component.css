@@ -4,6 +4,9 @@ div.article-wrapper {
     height: 100%;
     margin-bottom: 17px;
 }
+div.article-wrapper:hover div.article-more-choice {
+    display: block;
+}
 
 div.article-infos-row-1,
 div.article-infos-row-2,
@@ -17,8 +20,12 @@ div.article-img-wrapper {
     position: relative;
     left: 5%;
 }
+div.article-img-wrapper:hover {
+    cursor: pointer;
+}
 div.article-infos {
     text-align: center;
+    padding-left: 17px;
 }
 div.article-infos-brand {
     font-weight: 650;
@@ -46,4 +53,25 @@ span.article-infos-price-whole-part {
         position: relative;
         left: 8%;
     }
+}
+
+
+div.article-more-choice {
+    display: none;
+    background-color: rgb(237, 168, 32);
+    color: #000;
+    text-transform: uppercase;
+    font-weight: 700;
+    width: 100%;
+    padding: 11px 1px;
+    position: absolute;
+    bottom: 20%;
+    border-radius: 3px;
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: background-color .45s ease .09s;
+    text-align: center;
+}
+div.article-more-choice:hover {
+    background-color: rgba(255, 170, 1, 0.904);
 }

@@ -1,13 +1,15 @@
-<div class="look-list">
+<div class="look-list" 
+     *ngIf="looks"
+     infiniteScroll
+     [infiniteScrollDistance]="1"
+     [infiniteScrollThrottle]="50"
+     (scrolled)="onScroll()">
 
     <app-htw-menu></app-htw-menu>
+    <ng-container *ngFor="let look of looks">
+        <app-htw-look [look]="look"></app-htw-look>
+        <hr>
+    </ng-container>
 
-    <app-htw-look></app-htw-look>
-    <hr>
-    <app-htw-look></app-htw-look>
-    <hr>
-    <app-htw-look></app-htw-look>
-    <hr>
-    <app-htw-look></app-htw-look>
-    <hr>
+    <app-htw-loader-indicator-spinner [show]="showLoadingIndicatorSpinner"></app-htw-loader-indicator-spinner>
 </div>

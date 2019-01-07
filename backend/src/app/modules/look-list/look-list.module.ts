@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { LookListComponent } from './components/look-list/look-list.component';
 import { SharedModule } from '../shared/shared.module';
-import { CoreModule } from '../core/core.module';
 import { MenuModule } from '../core/modules/menu/menu.module';
 
 @NgModule({
@@ -10,7 +10,8 @@ import { MenuModule } from '../core/modules/menu/menu.module';
   imports: [
     CommonModule,
     SharedModule,
-    MenuModule
+    MenuModule,
+    InfiniteScrollModule
   ],
   exports: [
     LookListComponent

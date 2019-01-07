@@ -1,48 +1,46 @@
-<div class="look">
+<div class="look" *ngIf="showLook">
     <div class="row">
-
-        <div class="col-md-5 look-img-wrapper">
-            <a routerLink="/look/detail">
-                <img src="assets/look.jpg" class="look-img" />
-                <div *ngIf="moreChoiceButtonEnabled" class="look-more-choice">
-                    PLUS DE CHOIX
-                </div>
-            </a>
+        
+        <div class="col-md-5 look-img-wrapper" >
+            <ng-container *ngIf="moreChoiceButtonEnabled; else moreChoiceButtonDisabled">
+                <a [routerLink]="['/look/detail', look.id]">
+                    <img [src]="imageLookPath" class="look-img" />
+                    <div class="look-more-choice">
+                        PLUS DE CHOIX
+                    </div>
+                </a>
+            </ng-container>
+            <ng-template #moreChoiceButtonDisabled>
+                    <img [src]="imageLookPath" class="look-img" />
+            </ng-template>
+            <button type="button" (click)="deleteLook()" class="btn btn-danger btn-lg btn-block btn-delete-look">Supprimer</button> 
+            <button type="button" *ngIf="!look.published" (click)="publishLook(true)" class="btn btn-success btn-lg btn-block btn-publish-look">Publier</button>
+            <button type="button" *ngIf="look.published" (click)="publishLook(false)" class="btn btn-primary btn-lg btn-block btn-publish-look">Dépublier</button>
         </div>
 
         <div class="col-md">
 
             <div class="row article-img-row">
 
-                <div class="col-md">
-                  <app-htw-article></app-htw-article>
-                </div>
-
-                <div class="col-md">
-                    <app-htw-article></app-htw-article>
-                </div>
-
-                <div class="col-md">
-                    <app-htw-article></app-htw-article>
-                </div>
+                <ng-container *ngFor="let in of counter(3); let i = index">
+                    <div class="col-md">
+                    <app-htw-article [article]="getArticleByRankAndLookArticleAssociationType(i + 1, lookArticleAssociationType.Principal)" ></app-htw-article>
+                    </div>
+                </ng-container>
 
             </div>
             
             <div class="row article-img-row">
 
-                <div class="col-md">
-                    <app-htw-article></app-htw-article>
-                </div>
-
-                <div class="col-md">
-                    <app-htw-article></app-htw-article>
-                </div>
-
-                <div class="col-md">
-                    <app-htw-article></app-htw-article>
-                </div>
+                <ng-container *ngFor="let in of counter(3); let i = index">
+                    <div class="col-md">
+                        <app-htw-article [article]="getArticleByRankAndLookArticleAssociationType(i + 4, lookArticleAssociationType.Principal)" ></app-htw-article>
+                    </div>
+                </ng-container>                
 
             </div>
+
         </div>
+
     </div>
 </div>

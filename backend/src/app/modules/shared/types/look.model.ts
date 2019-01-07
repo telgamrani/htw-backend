@@ -9,4 +9,6 @@ export class Look {
     imgString: string;
 
     articles: Array<Article>;
+
+    published: boolean;
 }

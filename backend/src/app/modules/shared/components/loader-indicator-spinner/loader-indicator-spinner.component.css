@@ -1,0 +1,8 @@
+div.loader-indicator-spinner {
+    text-align: center;
+    margin: 1px auto;
+}
+
+div.loader-indicator-spinner > img {
+    width: 6%;
+}

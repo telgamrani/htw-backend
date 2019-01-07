@@ -7,7 +7,7 @@ import { LookAddComponent } from '../look-add/components/look-add/look-add.compo
 const routes: Routes = [
   { path: '', redirectTo: 'look/list', pathMatch: 'full' },
   { path: 'look/list', component: LookListComponent },
-  { path: 'look/detail', component: LookDetailComponent },
+  { path: 'look/detail/:id', component: LookDetailComponent },
   { path: 'look/add', component: LookAddComponent },
   { path: '**', component: LookListComponent }
 ];

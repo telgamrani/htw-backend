@@ -1,20 +1,31 @@
 .look {
     /*border: 1px solid red;*/
 }
+
 div.look-img-wrapper {
     /*border: 1px solid goldenrod;*/
     position: relative;
     text-align: center;
     margin: 20px 10px;
 }
+
 img.look-img {
     /*border: 1px solid black;*/
     height: 95%;
     width: 100%;
 }
+
 .look .col , .look .col-md {
     /*border: 1px solid salmon;*/
 }
+
+button.btn-delete-look,
+button.btn-publish-look {
+    display: inline-block;
+    width: 40%;
+    margin: -18px 4px;
+}
+
 div.look-more-choice {
     background-color: rgb(237, 168, 32);
     text-transform: uppercase;
@@ -32,7 +43,41 @@ div.look-more-choice {
 div.look-more-choice:hover {
     background-color: rgba(255, 170, 1, 0.904);
 }
-@media (min-width: 350px) {
+@media (min-width: 1130px) {
+    div.look-more-choice:before {
+        content: ">";
+        right: 13px;
+        top: -1px;
+        height: 100%;
+        width: 2.2em;
+        font-size: 1.7em;
+        display: flex;
+        position: absolute;
+        justify-content: flex-end;
+        align-items: center;
+        font-weight: 500;
+        line-height: 1;
+        z-index: 1;
+    }
+}
+@media (max-width: 1130px) {
+    div.look-more-choice:before {
+        content: ">";
+        right: 4px;
+        top: -1px;
+        height: 100%;
+        width: 1.6em;
+        font-size: 1.5em;
+        display: flex;
+        position: absolute;
+        justify-content: flex-end;
+        align-items: center;
+        font-weight: 500;
+        line-height: 1;
+        z-index: 1;
+    }
+}
+@media (max-width: 750px) {
     div.look-more-choice:before {
         content: ">";
         right: 12px;
@@ -47,5 +92,10 @@ div.look-more-choice:hover {
         font-weight: 500;
         line-height: 1;
         z-index: 1;
+    }
+}
+@media (max-width: 350px) {
+    div.look-more-choice:before {
+        display: none;
     }
 }

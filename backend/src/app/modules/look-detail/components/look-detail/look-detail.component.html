@@ -1,151 +1,153 @@
-<app-htw-look [moreChoiceButtonEnabled]="false"></app-htw-look>
-        
-        <app-htw-title-center [title]="'PLUS DE CHOIX'"></app-htw-title-center>
+<ng-container *ngIf="look">  
+    <app-htw-look [look]="look" [moreChoiceButtonEnabled]="false"></app-htw-look>
+            
+    <app-htw-title-center [title]="'PLUS DE CHOIX'" ></app-htw-title-center>
 
-        <div class="look-detail-list-articles">
+    <div class="look-detail-list-articles">
 
-            <!-- 1 -->
-            <div class="row">
-                <div class="col-md">
-                    <div class="row">
-                        <div class="col-sm">
-                            <app-htw-article></app-htw-article>
-                        </div>
-                        <div class="col-sm">
-                            <app-htw-article></app-htw-article>
-                        </div>
+        <!-- 1 -->
+        <div class="row">
+            <div class="col-md">
+                <div class="row">
+                    <div class="col-sm">
+                        <app-htw-article [article]="getArticleByRankAndLookArticleAssociationType(1, lookArticleAssociationType.Secondary)"></app-htw-article>
+                    </div>
+                    <div class="col-sm">
+                        <app-htw-article [article]="getArticleByRankAndLookArticleAssociationType(2, lookArticleAssociationType.Secondary)"></app-htw-article>
                     </div>
                 </div>
-                <div class="col-md">
-                    <div class="row">
-                        <div class="col-sm">
-                            <app-htw-article></app-htw-article>
-                        </div>
-                        <div class="col-sm">
-                            <app-htw-article></app-htw-article>
-                        </div>
+            </div>
+            <div class="col-md">
+                <div class="row">
+                    <div class="col-sm">
+                        <app-htw-article [article]="getArticleByRankAndLookArticleAssociationType(3, lookArticleAssociationType.Secondary)"></app-htw-article>
+                    </div>
+                    <div class="col-sm">
+                        <app-htw-article [article]="getArticleByRankAndLookArticleAssociationType(4, lookArticleAssociationType.Secondary)"></app-htw-article>
                     </div>
                 </div>
-            </div> 
+            </div>
+        </div> 
 
-            <!-- 1 -->
-            <div class="row">
-                <div class="col-md">
-                    <div class="row">
-                        <div class="col-sm">
-                            <app-htw-article></app-htw-article>
-                        </div>
-                        <div class="col-sm">
-                            <app-htw-article></app-htw-article>
-                        </div>
+        <!-- 2 -->
+        <div class="row">
+            <div class="col-md">
+                <div class="row">
+                    <div class="col-sm">
+                        <app-htw-article [article]="getArticleByRankAndLookArticleAssociationType(5, lookArticleAssociationType.Secondary)"></app-htw-article>
+                    </div>
+                    <div class="col-sm">
+                        <app-htw-article [article]="getArticleByRankAndLookArticleAssociationType(6, lookArticleAssociationType.Secondary)"></app-htw-article>
                     </div>
                 </div>
-                <div class="col-md">
-                    <div class="row">
-                        <div class="col-sm">
-                            <app-htw-article></app-htw-article>
-                        </div>
-                        <div class="col-sm">
-                            <app-htw-article></app-htw-article>
-                        </div>
+            </div>
+            <div class="col-md">
+                <div class="row">
+                    <div class="col-sm">
+                        <app-htw-article [article]="getArticleByRankAndLookArticleAssociationType(7, lookArticleAssociationType.Secondary)"></app-htw-article>
+                    </div>
+                    <div class="col-sm">
+                        <app-htw-article [article]="getArticleByRankAndLookArticleAssociationType(8, lookArticleAssociationType.Secondary)"></app-htw-article>
                     </div>
                 </div>
-            </div> 
+            </div>
+        </div> 
 
-            <!-- 1 -->
-            <div class="row">
-                <div class="col-md">
-                    <div class="row">
-                        <div class="col-sm">
-                            <app-htw-article></app-htw-article>
-                        </div>
-                        <div class="col-sm">
-                            <app-htw-article></app-htw-article>
-                        </div>
+        <!-- 3 -->
+        <div class="row">
+            <div class="col-md">
+                <div class="row">
+                    <div class="col-sm">
+                        <app-htw-article [article]="getArticleByRankAndLookArticleAssociationType(9, lookArticleAssociationType.Secondary)"></app-htw-article>
+                    </div>
+                    <div class="col-sm">
+                        <app-htw-article [article]="getArticleByRankAndLookArticleAssociationType(10, lookArticleAssociationType.Secondary)"></app-htw-article>
                     </div>
                 </div>
-                <div class="col-md">
-                    <div class="row">
-                        <div class="col-sm">
-                            <app-htw-article></app-htw-article>
-                        </div>
-                        <div class="col-sm">
-                            <app-htw-article></app-htw-article>
-                        </div>
+            </div>
+            <div class="col-md">
+                <div class="row">
+                    <div class="col-sm">
+                        <app-htw-article [article]="getArticleByRankAndLookArticleAssociationType(11, lookArticleAssociationType.Secondary)"></app-htw-article>
+                    </div>
+                    <div class="col-sm">
+                        <app-htw-article [article]="getArticleByRankAndLookArticleAssociationType(12, lookArticleAssociationType.Secondary)"></app-htw-article>
                     </div>
                 </div>
-            </div> 
+            </div>
+        </div> 
 
-            <!-- 1 -->
-            <div class="row">
-                <div class="col-md">
-                    <div class="row">
-                        <div class="col-sm">
-                            <app-htw-article></app-htw-article>
-                        </div>
-                        <div class="col-sm">
-                            <app-htw-article></app-htw-article>
-                        </div>
+        <!-- 4 -->
+        <div class="row">
+            <div class="col-md">
+                <div class="row">
+                    <div class="col-sm">
+                        <app-htw-article [article]="getArticleByRankAndLookArticleAssociationType(13, lookArticleAssociationType.Secondary)"></app-htw-article>
+                    </div>
+                    <div class="col-sm">
+                        <app-htw-article [article]="getArticleByRankAndLookArticleAssociationType(14, lookArticleAssociationType.Secondary)"></app-htw-article>
                     </div>
                 </div>
-                <div class="col-md">
-                    <div class="row">
-                        <div class="col-sm">
-                            <app-htw-article></app-htw-article>
-                        </div>
-                        <div class="col-sm">
-                            <app-htw-article></app-htw-article>
-                        </div>
+            </div>
+            <div class="col-md">
+                <div class="row">
+                    <div class="col-sm">
+                        <app-htw-article [article]="getArticleByRankAndLookArticleAssociationType(15, lookArticleAssociationType.Secondary)"></app-htw-article>
+                    </div>
+                    <div class="col-sm">
+                        <app-htw-article [article]="getArticleByRankAndLookArticleAssociationType(16, lookArticleAssociationType.Secondary)"></app-htw-article>
                     </div>
                 </div>
-            </div> 
+            </div>
+        </div> 
 
-            <!-- 1 -->
-            <div class="row">
-                <div class="col-md">
-                    <div class="row">
-                        <div class="col-sm">
-                            <app-htw-article></app-htw-article>
-                        </div>
-                        <div class="col-sm">
-                            <app-htw-article></app-htw-article>
-                        </div>
+        <!-- 5 -->
+        <div class="row">
+            <div class="col-md">
+                <div class="row">
+                    <div class="col-sm">
+                        <app-htw-article [article]="getArticleByRankAndLookArticleAssociationType(17, lookArticleAssociationType.Secondary)"></app-htw-article>
+                    </div>
+                    <div class="col-sm">
+                        <app-htw-article [article]="getArticleByRankAndLookArticleAssociationType(18, lookArticleAssociationType.Secondary)"></app-htw-article>
                     </div>
                 </div>
-                <div class="col-md">
-                    <div class="row">
-                        <div class="col-sm">
-                            <app-htw-article></app-htw-article>
-                        </div>
-                        <div class="col-sm">
-                            <app-htw-article></app-htw-article>
-                        </div>
+            </div>
+            <div class="col-md">
+                <div class="row">
+                    <div class="col-sm">
+                        <app-htw-article [article]="getArticleByRankAndLookArticleAssociationType(19, lookArticleAssociationType.Secondary)"></app-htw-article>
+                    </div>
+                    <div class="col-sm">
+                        <app-htw-article [article]="getArticleByRankAndLookArticleAssociationType(20, lookArticleAssociationType.Secondary)"></app-htw-article>
                     </div>
                 </div>
-            </div> 
+            </div>
+        </div> 
 
-            <!-- 1 -->
-            <div class="row">
-                <div class="col-md">
-                    <div class="row">
-                        <div class="col-sm">
-                            <app-htw-article></app-htw-article>
-                        </div>
-                        <div class="col-sm">
-                            <app-htw-article></app-htw-article>
-                        </div>
+        <!-- 6 -->
+        <div class="row">
+            <div class="col-md">
+                <div class="row">
+                    <div class="col-sm">
+                        <app-htw-article [article]="getArticleByRankAndLookArticleAssociationType(21, lookArticleAssociationType.Secondary)"></app-htw-article>
+                    </div>
+                    <div class="col-sm">
+                        <app-htw-article [article]="getArticleByRankAndLookArticleAssociationType(22, lookArticleAssociationType.Secondary)"></app-htw-article>
                     </div>
                 </div>
-                <div class="col-md">
-                    <div class="row">
-                        <div class="col-sm">
-                            <app-htw-article></app-htw-article>
-                        </div>
-                        <div class="col-sm">
-                            <app-htw-article></app-htw-article>
-                        </div>
+            </div>
+            <div class="col-md">
+                <div class="row">
+                    <div class="col-sm">
+                        <app-htw-article [article]="getArticleByRankAndLookArticleAssociationType(23, lookArticleAssociationType.Secondary)"></app-htw-article>
+                    </div>
+                    <div class="col-sm">
+                        <app-htw-article [article]="getArticleByRankAndLookArticleAssociationType(24, lookArticleAssociationType.Secondary)"></app-htw-article>
                     </div>
                 </div>
-            </div> 
+            </div>
+        </div> 
 
-        </div>  
+    </div>  
+</ng-container>

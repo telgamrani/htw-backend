@@ -1,7 +1,17 @@
 <div class="article-wrapper">
-    <a href="#">
+
+    <a [href]="(article.shoppingUrl) ? article.shoppingUrl: '#'" target="_blank" >
         <div class="article-img-wrapper">
-            <img width="90%" height="100%" *ngIf="imageArticlePath" [src]="imageArticlePath"/>
+            <ng-container *ngIf="imageArticleBase64;else _imageArticlePath">
+                <img width="90%" height="100%" [src]="imageArticleBase64" />
+            </ng-container>
+            <ng-template #_imageArticlePath>
+                <img width="90%" height="100%" *ngIf="imageArticlePath" [src]="imageArticlePath" />
+            </ng-template>
+            
+            <div class="article-more-choice" *ngIf="article.shoppingSiteName">
+                    VOIR SUR {{article.shoppingSiteName | uppercase}}
+            </div>
         </div>
         <div class="article-infos">
             <div class="row article-infos-row-1">
@@ -15,4 +25,4 @@
             </div>
         </div>
     </a>
-  </div>
+</div>

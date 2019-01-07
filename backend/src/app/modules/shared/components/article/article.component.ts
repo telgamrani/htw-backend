@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
 import { Article } from '../../types/article.model';
 import { PriceUtilService } from '../../utils/price-util.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-htw-article',
@@ -14,10 +15,26 @@ export class ArticleComponent implements OnInit, OnChanges {
 
   priceWholePart: string;
   priceDecimalPart: string;
-  imageArticlePath: SafeResourceUrl;
+  imageArticleBase64: SafeResourceUrl;
+
+  get imageArticlePath() {
+
+    if(!this.article 
+      || (this.article && !this.article.imgUrl)
+      || (this.article && this.article.imgUrl && this.article.imgUrl.includes('null'))) {
+      return;
+    }
+
+    
+    return this._sanitizer.bypassSecurityTrustUrl(environment.imageArticleRootPath.concat(this.article.imgUrl));
+  }
+
+  set imageArticlePath(value: SafeResourceUrl) {
+    this.imageArticlePath = value;
+  }
 
   constructor(
-    private sanitizer: DomSanitizer,
+    private _sanitizer: DomSanitizer,
     private priceUtil: PriceUtilService
     ) { }
 
@@ -50,7 +67,7 @@ export class ArticleComponent implements OnInit, OnChanges {
       this.priceWholePart = priceWholeAndDecimalPart.wholePart;
       this.priceDecimalPart = priceWholeAndDecimalPart.decimalPart;
       if(this.article.imgString) {
-        this.imageArticlePath = this.sanitizer.bypassSecurityTrustUrl(this.article.imgString.toString());
+        this.imageArticleBase64 = this._sanitizer.bypassSecurityTrustUrl(this.article.imgString.toString());
       }
     }
   }

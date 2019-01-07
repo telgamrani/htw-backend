@@ -6,7 +6,7 @@ import { Look } from 'src/app/modules/shared/types/look.model';
 import { FileUtilService } from 'src/app/modules/shared/utils/file-util.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { JsonUtilService } from 'src/app/modules/shared/utils/json-util.service';
-import { LookService } from 'src/app/modules/shared/services/look.service';
+import { LookService } from 'src/app/modules/core/services/look.service';
 
 @Component({
   selector: 'app-htw-look-add',
@@ -91,10 +91,14 @@ export class LookAddComponent implements OnInit {
   }
 
   sendAddLookRequest() {
-    this.lookService.addLook(this.addLookRequest).subscribe(
-      response => console.log('success add look'),
-      error => console.log('error add look')
-    );
+    const isOk = confirm('êtes-vous sur de vouloir ajouter ce look ?');
+    if(isOk) {
+      this.lookService.addLook(this.addLookRequest).subscribe(
+        response => console.log('success add look'),
+        error => console.log('error add look')
+      );
+    }
+    return false;
   }
 
 }

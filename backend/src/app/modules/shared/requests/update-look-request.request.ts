@@ -1,6 +1,6 @@
 import { Look } from '../types/look.model';
 
-export class AddLookRequest {
+export class UpdateLookRequest {
 
     look: Look;
 

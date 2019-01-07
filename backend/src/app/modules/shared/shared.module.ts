@@ -7,9 +7,10 @@ import { ArticleComponent } from './components/article/article.component';
 import { RoutingModule } from '../routing/routing.module';
 import { TitleCenterComponent } from './components/title-center/title-center.component';
 import { FormAddArticleComponent } from './components/form-add-article/form-add-article.component';
+import { LoaderIndicatorSpinnerComponent } from './components/loader-indicator-spinner/loader-indicator-spinner.component';
 
 @NgModule({
-  declarations: [LookComponent, ArticleComponent, TitleCenterComponent, FormAddArticleComponent],
+  declarations: [LookComponent, ArticleComponent, TitleCenterComponent, FormAddArticleComponent, LoaderIndicatorSpinnerComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -19,7 +20,8 @@ import { FormAddArticleComponent } from './components/form-add-article/form-add-
     LookComponent,
     ArticleComponent,
     TitleCenterComponent,
-    FormAddArticleComponent
+    FormAddArticleComponent,
+    LoaderIndicatorSpinnerComponent
   ]
 })
 export class SharedModule { }
