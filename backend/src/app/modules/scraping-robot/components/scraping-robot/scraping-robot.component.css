@@ -1,0 +1,33 @@
+.robot-scraping-action-bar {
+    text-align: center;
+}
+
+.robot-scraping-action-bar .row {
+    margin-bottom: 15px;
+}
+
+.robot-scraping-action-bar .icon-link {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.isActive {
+    color: rgb(237, 168, 32);
+}
+
+.robot-scraping-wrapper {
+    margin-top: 50px;
+}
+
+.robot-scraping-content {
+    border:  1px solid rgba(61, 59, 59, 0.301);
+    margin-top: 15px;
+}
+
+.json-wrapper {
+    border-left: 1px solid rgba(61, 59, 59, 0.301);
+}
+
+.json-wrapper pre {
+    outline: none;
+}

@@ -9,6 +9,7 @@ import { LookDetailModule } from './modules/look-detail/look-detail.module';
 import { RoutingModule } from './modules/routing/routing.module';
 import { LookAddModule } from './modules/look-add/look-add.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ScrapingRobotModule } from './modules/scraping-robot/scraping-robot.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     CoreModule,
     LookListModule,
     LookDetailModule,
-    LookAddModule
+    LookAddModule,
+    ScrapingRobotModule
   ],
   providers: [],
   bootstrap: [AppComponent]

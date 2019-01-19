@@ -1,0 +1,83 @@
+<div class="robot-scraping-action-bar">
+  <div class="row">
+    <div class="col">
+
+      <i class="fa fa-play fa-3x icon-link" 
+        [ngClass]="{'isActive': activatePlayAction}"
+        (click)="play()">
+      </i>
+
+      <i class="fa fa-pause fa-3x icon-link" 
+        [ngClass]="{'isActive': activatePauseAction}"
+        (click)="pause()">
+      </i>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+        <p>
+          <strong>Total</strong> : XX | 
+          <strong>Success</strong> : <strong class="is-green">XX</strong> | 
+          <strong>Errors</strong> : <strong class="is-red">XX</strong> | 
+          <strong>Warnings</strong> : <strong class="is-yellow">XX</strong> 
+        </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <strong>In progress : PATH</strong>
+    </div>
+  </div>
+</div>
+
+<div class="robot-scraping-wrapper">
+    <div class="robot-scraping-content">
+        <div class="row">
+          <div class="col">
+            <app-htw-article></app-htw-article>
+          </div>
+          <div class="col json-wrapper">
+            <pre>
+              json : content
+            </pre>
+          </div>
+        </div>
+    </div>
+    <div class="robot-scraping-content">
+        <div class="row">
+          <div class="col">
+            <app-htw-article></app-htw-article>
+          </div>
+          <div class="col json-wrapper">
+            <pre>
+              json : content
+            </pre>
+          </div>
+        </div>
+    </div>
+    <div class="robot-scraping-content">
+        <div class="row">
+          <div class="col">
+            <app-htw-article></app-htw-article>
+          </div>
+          <div class="col json-wrapper">
+            <pre>
+              json : content
+            </pre>
+          </div>
+        </div>
+    </div>
+    <div class="robot-scraping-content">
+        <div class="row">
+          <div class="col">
+            <app-htw-article></app-htw-article>
+          </div>
+          <div class="col json-wrapper">
+            <pre>
+              json : content
+            </pre>
+          </div>
+        </div>
+    </div>
+</div>
