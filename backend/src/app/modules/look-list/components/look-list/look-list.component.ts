@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Look } from 'src/app/modules/shared/types/look.model';
+import { Look } from 'src/app/modules/shared/models/look.model';
 import { LookService } from 'src/app/modules/core/services/look.service';
 
 @Component({

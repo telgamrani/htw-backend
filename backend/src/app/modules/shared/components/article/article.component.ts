@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { Article } from '../../types/article.model';
+import { Article } from '../../models/article.model';
 import { PriceUtilService } from '../../utils/price-util.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';

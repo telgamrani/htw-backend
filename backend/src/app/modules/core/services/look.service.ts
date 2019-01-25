@@ -3,7 +3,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AddLookRequest } from '../../shared/requests/add-look-request.request';
 import { Observable } from 'rxjs';
-import { Look } from '../../shared/types/look.model';
+import { Look } from '../../shared/models/look.model';
 import { UpdateLookRequest } from '../../shared/requests/update-look-request.request';
 import { PublishLookRequest } from '../../shared/requests/publish-look-request.request';
 
@@ -15,6 +15,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class LookService {
+
   looksStorage: Array<Look>;
 
   private lookUrl = environment.api.concat('/look');

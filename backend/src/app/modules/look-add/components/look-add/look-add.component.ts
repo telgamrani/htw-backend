@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LookArticleAssociationType } from 'src/app/modules/shared/enums/look-article-association-type.enum';
-import { Article } from 'src/app/modules/shared/types/article.model';
+import { Article } from 'src/app/modules/shared/models/article.model';
 import { AddLookRequest } from 'src/app/modules/shared/requests/add-look-request.request';
-import { Look } from 'src/app/modules/shared/types/look.model';
+import { Look } from 'src/app/modules/shared/models/look.model';
 import { FileUtilService } from 'src/app/modules/shared/utils/file-util.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { JsonUtilService } from 'src/app/modules/shared/utils/json-util.service';

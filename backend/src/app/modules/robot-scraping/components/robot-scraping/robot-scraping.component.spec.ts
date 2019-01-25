@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ScrapingRobotComponent } from './scraping-robot.component';
+import { RobotScrapingComponent } from './robot-scraping.component';
 
-describe('ScrapingRobotComponent', () => {
-  let component: ScrapingRobotComponent;
-  let fixture: ComponentFixture<ScrapingRobotComponent>;
+describe('RobotScrapingComponent', () => {
+  let component: RobotScrapingComponent;
+  let fixture: ComponentFixture<RobotScrapingComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ScrapingRobotComponent ]
+      declarations: [ RobotScrapingComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ScrapingRobotComponent);
+    fixture = TestBed.createComponent(RobotScrapingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

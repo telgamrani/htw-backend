@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LookService } from 'src/app/modules/core/services/look.service';
-import { Look } from 'src/app/modules/shared/types/look.model';
+import { Look } from 'src/app/modules/shared/models/look.model';
 import { LookArticleAssociationType } from 'src/app/modules/shared/enums/look-article-association-type.enum';
-import { Article } from 'src/app/modules/shared/types/article.model';
+import { Article } from 'src/app/modules/shared/models/article.model';
 
 @Component({
   selector: 'app-htw-look-detail',

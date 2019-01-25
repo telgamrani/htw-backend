@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { LookArticleAssociationType } from '../../enums/look-article-association-type.enum';
-import { Look } from '../../types/look.model';
+import { Look } from '../../models/look.model';
 import { environment } from 'src/environments/environment';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Article } from '../../types/article.model';
+import { Article } from '../../models/article.model';
 import { LookService } from 'src/app/modules/core/services/look.service';
 import { PublishLookRequest } from '../../requests/publish-look-request.request';
 

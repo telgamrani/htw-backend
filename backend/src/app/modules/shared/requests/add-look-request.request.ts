@@ -1,4 +1,4 @@
-import { Look } from '../types/look.model';
+import { Look } from '../models/look.model';
 
 export class AddLookRequest {
 
