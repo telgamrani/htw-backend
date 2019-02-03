@@ -25,8 +25,12 @@ export class ArticleComponent implements OnInit, OnChanges {
       return;
     }
 
-    
-    return this._sanitizer.bypassSecurityTrustUrl(environment.imageArticleRootPath.concat(this.article.imgUrl));
+    if(!this.article.imgUrl.toLocaleLowerCase().startsWith('http')) {
+      this.article.imgUrl = environment.imageArticleRootPath.concat(this.article.imgUrl)
+    }
+
+    return this._sanitizer.bypassSecurityTrustUrl(this.article.imgUrl);
+
   }
 
   set imageArticlePath(value: SafeResourceUrl) {

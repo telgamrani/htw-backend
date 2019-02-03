@@ -7,9 +7,11 @@ export class Article {
     shoppingSiteName: string;
 	
 	shoppingUrl: string;
-	
+    
+    // TODO : A supprimer
     imgUrl: string;
 
+    // TODO : A supprimer
     imgString: string | ArrayBuffer ;
     
     brand: string;
@@ -21,4 +23,11 @@ export class Article {
     lookArticleAssociationType: LookArticleAssociationType;
 
     rank: number;
+
+    sizes: Array<string>;
+
+    color: string;
+
+    images: Array<string>;
+
 }

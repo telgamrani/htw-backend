@@ -10,6 +10,18 @@ import { RoutingModule } from './modules/routing/routing.module';
 import { LookAddModule } from './modules/look-add/look-add.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RobotScrapingModule } from './modules/robot-scraping/robot-scraping.module';
+import { HighlightModule } from 'ngx-highlightjs';
+import json from 'highlight.js/lib/languages/json';
+
+/**
+ * Import every language you wish to highlight here
+ * NOTE: The name of each language must match the file name its imported from
+ */
+export function hljsLanguages() {
+  return [
+    {name: 'json', func: json}
+  ];
+}
 
 @NgModule({
   declarations: [
@@ -24,7 +36,10 @@ import { RobotScrapingModule } from './modules/robot-scraping/robot-scraping.mod
     LookListModule,
     LookDetailModule,
     LookAddModule,
-    RobotScrapingModule
+    RobotScrapingModule,
+    HighlightModule.forRoot({
+      languages: hljsLanguages
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

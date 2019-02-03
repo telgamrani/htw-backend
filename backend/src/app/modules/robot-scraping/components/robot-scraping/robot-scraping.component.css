@@ -31,3 +31,8 @@
 .json-wrapper pre {
     outline: none;
 }
+
+pre {
+    background: #322931;
+    overflow-x: scroll;
+}

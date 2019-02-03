@@ -19,42 +19,42 @@ export class LookService {
   looksStorage: Array<Look>;
 
   private lookUrl = environment.api.concat('/look');
-  private addAction = '/add';
-  private getAction = '/get';
-  private getAllAction = '/getAll';
-  private deleteAction = '/delete';
-  private updateAction = '/update';
-  private publishAction = '/publish';
+  private actionAdd = '/add';
+  private actionGet = '/get';
+  private actionGetAll = '/getAll';
+  private actionDelete = '/delete';
+  private actionUpdate = '/update';
+  private actionPublish = '/publish';
   private size = 8;
 
   constructor(private http: HttpClient) {}
 
   addLook(addLookRequest: AddLookRequest): Observable<Look> {
-    return this.http.post<Look>(this.lookUrl.concat(this.addAction), addLookRequest, httpOptions);
+    return this.http.post<Look>(this.lookUrl.concat(this.actionAdd), addLookRequest, httpOptions);
   }
 
   updateLook(updateLookRequest: UpdateLookRequest): Observable<Look> {
-    return this.http.put<Look>(this.lookUrl.concat(this.updateAction), updateLookRequest, httpOptions);
+    return this.http.put<Look>(this.lookUrl.concat(this.actionUpdate), updateLookRequest, httpOptions);
   }
 
   publishLook(publishLookRequest: PublishLookRequest): Observable<Look> {
-    return this.http.put<Look>(this.lookUrl.concat(this.publishAction), publishLookRequest, httpOptions);
+    return this.http.put<Look>(this.lookUrl.concat(this.actionPublish), publishLookRequest, httpOptions);
   }
 
   getLooks() : Observable<Array<Look>> {
-    return this.http.get<Array<Look>>(this.lookUrl.concat(this.getAllAction), httpOptions);
+    return this.http.get<Array<Look>>(this.lookUrl.concat(this.actionGetAll), httpOptions);
   }
 
   getLooksByPage(page:number) : Observable<Array<Look>> {
-    return this.http.get<Array<Look>>(this.lookUrl.concat(this.getAllAction+"/"+page+"/"+this.size), httpOptions);
+    return this.http.get<Array<Look>>(this.lookUrl.concat(this.actionGetAll+"/"+page+"/"+this.size), httpOptions);
   }
 
   getLookById(id: number): Observable<Look> {
-    return this.http.get<Look>(this.lookUrl.concat(this.getAction+"/"+id), httpOptions);
+    return this.http.get<Look>(this.lookUrl.concat(this.actionGet+"/"+id), httpOptions);
   }
 
   deleteLookById(id: number) {
-    return this.http.delete(this.lookUrl.concat(this.deleteAction+"/"+id), httpOptions);
+    return this.http.delete(this.lookUrl.concat(this.actionDelete+"/"+id), httpOptions);
   }
 
   getLookFromLookStorageByIdOrDb(id: number): Promise<Look> {

@@ -17,7 +17,7 @@
   <div class="row">
     <div class="col">
         <p>
-          <strong>Total</strong> : XX | 
+          <strong>Total</strong> : {{articles.length}} | 
           <strong>Success</strong> : <strong class="is-green">XX</strong> | 
           <strong>Errors</strong> : <strong class="is-red">XX</strong> | 
           <strong>Warnings</strong> : <strong class="is-yellow">XX</strong> 
@@ -26,56 +26,21 @@
   </div>
   <div class="row">
     <div class="col">
-      <strong>In progress : PATH</strong>
+      <strong>In scraping : {{currentPathInScraping}}</strong>
     </div>
   </div>
 </div>
 
 <div class="robot-scraping-wrapper">
-    <div class="robot-scraping-content">
+    <div *ngFor="let article of articles" class="robot-scraping-content">
         <div class="row">
-          <div class="col">
-            <app-htw-article></app-htw-article>
+          <div class="col-6">
+            <app-htw-article [article]="article"></app-htw-article>
           </div>
-          <div class="col json-wrapper">
+          <div class="col-6 json-wrapper">
             <pre>
-              json : content
-            </pre>
-          </div>
-        </div>
-    </div>
-    <div class="robot-scraping-content">
-        <div class="row">
-          <div class="col">
-            <app-htw-article></app-htw-article>
-          </div>
-          <div class="col json-wrapper">
-            <pre>
-              json : content
-            </pre>
-          </div>
-        </div>
-    </div>
-    <div class="robot-scraping-content">
-        <div class="row">
-          <div class="col">
-            <app-htw-article></app-htw-article>
-          </div>
-          <div class="col json-wrapper">
-            <pre>
-              json : content
-            </pre>
-          </div>
-        </div>
-    </div>
-    <div class="robot-scraping-content">
-        <div class="row">
-          <div class="col">
-            <app-htw-article></app-htw-article>
-          </div>
-          <div class="col json-wrapper">
-            <pre>
-              json : content
+                <code [highlight]="article | json">
+                </code>
             </pre>
           </div>
         </div>
