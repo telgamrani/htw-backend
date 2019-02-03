@@ -261,30 +261,30 @@ export class RobotScrapingUrlService {
     return images;    
   }
 
-  getArticle(data: string, allSelectors: Array<RobotScrapingSelector>, urlSource?: string ): Article {
+  getArticle(data: string, robotScrapingUrl: RobotScrapingUrl, urlSource?: string ): Article {
 
     const article = new Article();
 
     // resource (10)
-    let selectors = _.filter(allSelectors, {'elementTarget': ElementTarget.ARTICLES_DATA_DELIMITER});
+    let selectors = _.filter(robotScrapingUrl.selectors, {'elementTarget': ElementTarget.ARTICLES_DATA_DELIMITER});
     const articlesData = this.getArticlesDataDelimiter(data, selectors);
 
     // console.log(articlesData);
 
     // get element : brand
-    selectors = _.filter(allSelectors, {'elementTarget': ElementTarget.ARTICLE_BRAND});
+    selectors = _.filter(robotScrapingUrl.selectors, {'elementTarget': ElementTarget.ARTICLE_BRAND});
     const brand = this.getArticleBrand(articlesData, selectors);
     article.brand = brand;
     // console.log('brand : ', brand);
 
     // get element : description
-    selectors = _.filter(allSelectors, {'elementTarget': ElementTarget.ARTICLE_DESCRIPTION});
+    selectors = _.filter(robotScrapingUrl.selectors, {'elementTarget': ElementTarget.ARTICLE_DESCRIPTION});
     const description = this.getArticleDescription(articlesData, selectors);
     article.description = description;
     // console.log('description : ', description);
 
     // get element : price
-    selectors = _.filter(allSelectors, {'elementTarget': ElementTarget.ARTICLE_PRICE});
+    selectors = _.filter(robotScrapingUrl.selectors, {'elementTarget': ElementTarget.ARTICLE_PRICE});
     const price = this.getArticlePrice(articlesData, selectors);
     article.price = price
     console.log('price : ', price);
@@ -294,19 +294,28 @@ export class RobotScrapingUrlService {
     console.log('shoppingUrl : ',urlSource);
 
     // get element : color 
-    selectors = _.filter(allSelectors, {'elementTarget': ElementTarget.ARTICLE_COLOR});
+    selectors = _.filter(robotScrapingUrl.selectors, {'elementTarget': ElementTarget.ARTICLE_COLOR});
     const color = this.getArticleColor(articlesData, selectors);
     article.color = color;
     // console.log('color : ', color);
 
     // get element : sizes
-    selectors = _.filter(allSelectors, {'elementTarget': ElementTarget.ARTICLE_SIZES});
+    selectors = _.filter(robotScrapingUrl.selectors, {'elementTarget': ElementTarget.ARTICLE_SIZES});
     const sizes = this.getArticleSizes(articlesData, selectors);
     article.sizes = sizes;
     // console.log('sizes : ', sizes.join(' | '));
 
+    // get element : categories
+    if(robotScrapingUrl.categories) {
+      const categories = new Array<string>();
+      robotScrapingUrl.categories.forEach(c => {
+        categories.push(c.category);
+      });
+      article.categories = categories;
+    }
+
     // get element : images
-    selectors = _.filter(allSelectors, {'elementTarget': ElementTarget.ARTICLE_IMAGES});
+    selectors = _.filter(robotScrapingUrl.selectors, {'elementTarget': ElementTarget.ARTICLE_IMAGES});
     const images = this.getArticleImages(articlesData, selectors);
     article.images = images.splice(0,5);
     // console.log('imgs : ', article.images.join(' ====== '));
@@ -389,7 +398,7 @@ export class RobotScrapingUrlService {
                   const asyncResponse3 = await this.getResourceByUrl(robotScrapingGetResourceByUrlRequest);
                   if(asyncResponse3) {
                     
-                    const article = this.getArticle(asyncResponse3, robotScrapingUrl.selectors, url);
+                    const article = this.getArticle(asyncResponse3, robotScrapingUrl, url);
                     
                     // TODO : A supprimer /  refaire
                     article.imgUrl = article.images[3];
