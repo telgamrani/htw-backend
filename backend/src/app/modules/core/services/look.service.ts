@@ -21,7 +21,7 @@ export class LookService {
   private lookUrl = environment.api.concat('/look');
   private actionAdd = '/add';
   private actionGet = '/get';
-  private actionGetAll = '/getAll';
+  private actionGetAll = '/get/all';
   private actionDelete = '/delete';
   private actionUpdate = '/update';
   private actionPublish = '/publish';

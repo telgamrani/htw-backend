@@ -290,7 +290,7 @@ export class RobotScrapingUrlService {
     // get element : price
     selectors = _.filter(robotScrapingUrl.selectors, {'elementTarget': ElementTarget.ARTICLE_PRICE});
     const price = this.getArticlePrice(articlesData, selectors);
-    article.price = price
+    article.price = price;
     console.log('price : ', price);
     
     // get element : shopping url 

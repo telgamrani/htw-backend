@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class UrlUtilService {
 
-  siteNameRegexp = /(?:www\.|\/\/)([^/]+)/i;
+  siteNameRegexp = /(?:\/\/)(?:www\.)?([^/]+)/i;
 
   constructor() { }
 
@@ -13,7 +13,6 @@ export class UrlUtilService {
     let urlBaseName: string;
     if(url) {
       const pathArray = url.split( '/' );
-      debugger
       if(pathArray.length > 2) {
         const protocol = pathArray[0];
         const host = pathArray[2];
