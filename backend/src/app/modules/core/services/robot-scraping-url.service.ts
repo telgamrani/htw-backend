@@ -137,12 +137,16 @@ export class RobotScrapingUrlService {
         for (let index = 0; index < data.length; index++) {
           if (data[index]) {
             const anchorElement = data[index] as HTMLAnchorElement;
-              if (!anchorElement.pathname.toLowerCase().startsWith('http')) {
-                const urlBaseName = this.urlUtil.getUrlBaseName(url);
+            if (!anchorElement.pathname.toLowerCase().startsWith('http')) {
+              const urlBaseName = this.urlUtil.getBaseName(url);
+              if (urlBaseName) {
                 urls.push(urlBaseName.concat(anchorElement.pathname));
+              } else {
+                console.error('Url base name not found !');
               }
-          } else {
-            urls.push(data[index]);
+            } else {
+              urls.push(anchorElement.pathname);
+            }
           }
         }
       }
@@ -292,6 +296,10 @@ export class RobotScrapingUrlService {
     // get element : shopping url 
     article.shoppingUrl = urlSource;
     console.log('shoppingUrl : ',urlSource);
+
+    // get element : shopping site name
+    article.shoppingSiteName = this.urlUtil.getSiteName(article.shoppingUrl);
+    console.log('shoppingSiteName : ', article.shoppingSiteName);
 
     // get element : color 
     selectors = _.filter(robotScrapingUrl.selectors, {'elementTarget': ElementTarget.ARTICLE_COLOR});
