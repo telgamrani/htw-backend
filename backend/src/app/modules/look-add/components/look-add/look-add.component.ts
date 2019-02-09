@@ -21,10 +21,6 @@ export class LookAddComponent implements OnInit {
 
   public lookArticleAssociationType = LookArticleAssociationType;
 
-  get addLookRequestJson() {
-    return this.sanitizer.bypassSecurityTrustHtml(this.jsonUtil.syntaxHighlight(JSON.stringify(this.addLookRequest, undefined, 4)));
-  }
-
   constructor(
     private sanitizer: DomSanitizer,
     private fileUtil: FileUtilService,
@@ -65,7 +61,8 @@ export class LookAddComponent implements OnInit {
         this.addLookRequest.look.imgString = response.toString();
         this.imageLookPath = this.sanitizer.bypassSecurityTrustUrl(this.addLookRequest.look.imgString.toString());
       }
-    )
+    );
+    return false;
   }
 
   private _addOrUpdateArticleOnAddLookRequest(article: Article) {

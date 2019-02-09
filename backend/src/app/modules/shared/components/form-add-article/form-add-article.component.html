@@ -1,4 +1,5 @@
-<div class="form-group">
+<!-- TODO A SUPPRIMER / REVOIR -->
+<!-- <div class="form-group">
     <input #fileImageArticle type="file" (change)="onFileImageArticle($event)" style="display: none" accept=".png, .jpg, .jpeg">
     <button type="submit" (click)="fileImageArticle.click()" class="btn btn-warning mb-2">Importer image article {{lookArticleAssociationType | lowercase }} {{rank}}</button>
     {{fileImageArticle.value | slice:0:40 }}
@@ -24,4 +25,14 @@
     <input type="text" [(ngModel)]="article.description" class="form-control" placeholder="Description">
     {{article.description}}
 </div>
-<button type="button" (click)="onSave()" class="btn btn-primary btn-lg btn-block">Enregister</button>
+<div class="form-group">
+    <button type="button" (click)="onSave()" class="btn btn-primary btn-lg btn-block">Enregister</button>
+</div> -->
+
+<div class="form-group">
+    <input type="number" class="form-control" [(ngModel)]="articleId" placeholder="article id">
+</div>
+<div class="form-group">
+    <button type="button" (click)="onSearch()" class="btn btn-primary btn-lg btn-block">Chercher et ajouter</button>
+    <button type="button" (click)="onSave()" class="btn btn-success btn-lg btn-block">Valider</button>
+</div>

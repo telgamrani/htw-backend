@@ -45,6 +45,8 @@
   <!--Add look request json title-->
   <app-htw-title-center [title]="'Add look request json'" ></app-htw-title-center>
 
-  <pre [innerHTML]="addLookRequestJson"></pre>
+  <pre>
+      <code [highlight]="addLookRequest | json"></code>
+  </pre>
   
   <button type="button" (click)="sendAddLookRequest()" class="btn btn-success btn-lg btn-block">Ajouter</button>

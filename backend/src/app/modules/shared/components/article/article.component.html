@@ -2,12 +2,7 @@
 
     <a [href]="(article.shoppingUrl) ? article.shoppingUrl: '#'" target="_blank" >
         <div class="article-img-wrapper">
-            <ng-container *ngIf="imageArticleBase64;else _imageArticlePath">
-                <img width="90%" height="100%" [src]="imageArticleBase64" />
-            </ng-container>
-            <ng-template #_imageArticlePath>
-                <img width="90%" height="100%" *ngIf="imageArticlePath" [src]="imageArticlePath" />
-            </ng-template>
+            <img width="90%" height="100%" *ngIf="article && article.images"  [src]="imageArticlePath" />
             
             <div class="article-more-choice" *ngIf="article.shoppingSiteName">
                     VOIR SUR {{article.shoppingSiteName | uppercase}}

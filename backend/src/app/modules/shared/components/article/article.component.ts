@@ -18,28 +18,14 @@ export class ArticleComponent implements OnInit, OnChanges {
   imageArticleBase64: SafeResourceUrl;
 
   get imageArticlePath() {
-
-    if(!this.article 
-      || (this.article && !this.article.imgUrl)
-      || (this.article && this.article.imgUrl && this.article.imgUrl.includes('null'))) {
-      return;
-    }
-
-    if(!this.article.imgUrl.toLocaleLowerCase().startsWith('http')) {
-      this.article.imgUrl = environment.imageArticleRootPath.concat(this.article.imgUrl)
-    }
-
-    return this._sanitizer.bypassSecurityTrustUrl(this.article.imgUrl);
-
-  }
-
-  set imageArticlePath(value: SafeResourceUrl) {
-    this.imageArticlePath = value;
+    return (this.article && this.article.images && this.article.images.length > 4) 
+            ? this.article.images[3] 
+            : this.article.images[0];
   }
 
   constructor(
     private _sanitizer: DomSanitizer,
-    private priceUtil: PriceUtilService
+    private _priceUtil: PriceUtilService
     ) { }
 
   ngOnInit() {
@@ -59,7 +45,7 @@ export class ArticleComponent implements OnInit, OnChanges {
   }
 
   private _initPriceWholeAndDecimalPart() {
-    const priceWholeAndDecimalPart = this.priceUtil.getWholeAndDecimalPart(this.article.price);
+    const priceWholeAndDecimalPart = this._priceUtil.getWholeAndDecimalPart(this.article.price);
     this.priceWholePart = priceWholeAndDecimalPart.wholePart;
     this.priceDecimalPart = priceWholeAndDecimalPart.decimalPart;
   }
@@ -67,12 +53,12 @@ export class ArticleComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
 
     if (changes['article'] && changes['article'].currentValue) {
-      const priceWholeAndDecimalPart = this.priceUtil.getWholeAndDecimalPart(changes['article'].currentValue.price);
+      const priceWholeAndDecimalPart = this._priceUtil.getWholeAndDecimalPart(changes['article'].currentValue.price);
       this.priceWholePart = priceWholeAndDecimalPart.wholePart;
       this.priceDecimalPart = priceWholeAndDecimalPart.decimalPart;
-      if(this.article.imgString) {
-        this.imageArticleBase64 = this._sanitizer.bypassSecurityTrustUrl(this.article.imgString.toString());
-      }
+      // if(this.article.imgString) {
+      //   this.imageArticleBase64 = this._sanitizer.bypassSecurityTrustUrl(this.article.imgString.toString());
+      // }
     }
   }
 

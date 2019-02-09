@@ -33,11 +33,3 @@ a, a:hover {
 .is-red {
     color: rgb(145, 17, 17);
 }
-
-/* JSON Syntax */
-pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; font-weight: 700; font-size: 0.9rem;}
-.string { color: green; }
-.number { color: rgb(17, 20, 18); }
-.boolean { color: blue; }
-.null { color: magenta; }
-.key { color: red; }
