@@ -3,7 +3,6 @@ import { Article } from '../../models/article.model';
 import { LookArticleAssociationType } from '../../enums/look-article-association-type.enum';
 import { SafeResourceUrl } from '@angular/platform-browser';
 import { ArticleService } from 'src/app/modules/core/services/article.service';
-import { log } from 'util';
 
 @Component({
   selector: 'app-htw-form-add-article',
