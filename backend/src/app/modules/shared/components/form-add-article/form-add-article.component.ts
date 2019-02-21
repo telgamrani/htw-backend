@@ -67,8 +67,8 @@ export class FormAddArticleComponent implements OnInit {
     this.saveArticle.emit(this.article); 
   }
 
-  onSelectPrincipalImageChange(event){
-    this.article.indexImagePrincipal = event;
+  onSelectPrincipalImageChange(indexImagePrincipal : number){
+    this.article.indexImagePrincipal = indexImagePrincipal;
   }
 
 }
