@@ -8,8 +8,7 @@ export class Article {
 	
 	shoppingUrl: string;
     
-    // TODO : A supprimer
-    imgUrl: string;
+    indexImagePrincipal: number;
 
     // TODO : A supprimer
     imgString: string | ArrayBuffer ;

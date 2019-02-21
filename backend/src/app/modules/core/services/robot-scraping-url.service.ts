@@ -408,10 +408,9 @@ export class RobotScrapingUrlService {
                     
                     const article = this.getArticle(asyncResponse3, robotScrapingUrl, url);
                     
-                    // TODO : A supprimer /  refaire
-                    article.imgUrl = article.images[3];
+                    article.indexImagePrincipal = 3;
                     if(article.images.length < 4) {
-                      article.imgUrl = article.images[0];
+                      article.indexImagePrincipal = 0;
                     }
 
                     // send new article

@@ -1,8 +1,7 @@
-<div class="article-wrapper">
-
+<div class="article-wrapper" *ngIf="article">
     <a [href]="(article.shoppingUrl) ? article.shoppingUrl: '#'" target="_blank" >
-        <div class="article-img-wrapper">
-            <img width="90%" height="100%" [src]="(article.images[3])? article.images[3] : article.images[0]" />
+        <div class="article-img-wrapper" *ngIf="article.images && article.images.length">
+            <img width="90%" height="100%" [src]="article.images[article.indexImagePrincipal]" />
             
             <div class="article-more-choice" *ngIf="article.shoppingSiteName">
                     VOIR SUR {{article.shoppingSiteName | uppercase}}
