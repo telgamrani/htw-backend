@@ -408,10 +408,9 @@ export class RobotScrapingUrlService {
                     
                     const article = this.getArticle(asyncResponse3, robotScrapingUrl, url);
                     
-                    // TODO : A supprimer /  refaire
-                    article.imgUrl = article.images[3];
+                    article.indexImagePrincipal = 3;
                     if(article.images.length < 4) {
-                      article.imgUrl = article.images[0];
+                      article.indexImagePrincipal = 0;
                     }
 
                     // send new article
@@ -436,144 +435,6 @@ export class RobotScrapingUrlService {
     });
   }
 
-  // TODO : a supprimer
-  _scrapingArticles(robotScrapingUrls: Array<RobotScrapingUrl>) {
-    // urls (1)
-    robotScrapingUrls.forEach(async robotScrapingUrl => {
-
-      if(robotScrapingUrl.url && robotScrapingUrl.url.length > 0) {
-
-        const robotScrapingGetResourceByUrlRequest = new RobotScrapingGetResourceByUrlRequest();
-
-        // url (2)
-        robotScrapingGetResourceByUrlRequest.url = robotScrapingUrl.url;
-
-        const asyncResponse1 = await this.getResourceByUrl(robotScrapingGetResourceByUrlRequest);
-        if(asyncResponse1) {
-
-              // resource (3) + get nbr page (4)
-              const nbrPagesData = this.getElementById(asyncResponse1, 'z-nvg-cognac-props'); // TODO -- db
-            
-              if(nbrPagesData) {
-
-                const nbrPagesMatch = this.getElementByRegexp(nbrPagesData.innerHTML, new RegExp(/"page_count":([0-9]+),/, 'img')); // TODO -- db
-                
-                if(nbrPagesMatch && Array.isArray(nbrPagesMatch) && nbrPagesMatch.length >= 1) {
-                  const nbrPages: number = Number.parseInt(nbrPagesMatch[1]);
-
-                  // urls (5)
-                  for (let nbrPage = 1; nbrPage <= nbrPages; nbrPage++) {
-                    let urlPage = robotScrapingUrl.url; // TODO -- db
-                    urlPage = urlPage.concat('/?p=#__nbrPage__#'); // TODO -- db
-
-                    // url (6)
-                    urlPage = urlPage.replace(nbrPagePlaceholder, nbrPage.toString());
-                    console.log(urlPage);
-
-                    // send current path in scraping
-                    this.currentPathInScraping(urlPage);
-
-                    // resource (7)
-                    robotScrapingGetResourceByUrlRequest.url = urlPage;
-                    const asyncResponse2 = await this.getResourceByUrl(robotScrapingGetResourceByUrlRequest);
-                    if(asyncResponse2) {
-                        // console.log(this.getElementsByClassName(response, 'cat_imageLink-OPGGa'));
-                        // urls (8)
-                        const pageDetailUrlsData = this.getElementsByClassName(asyncResponse2, 'cat_imageLink-OPGGa'); // TODO -- db
-                        
-                        if(pageDetailUrlsData && pageDetailUrlsData.length > 0) {
-                          for( let indexUrl = 0; indexUrl < pageDetailUrlsData.length; indexUrl++) {
-                            // url (9)
-                            const pageDetailUrl = pageDetailUrlsData[indexUrl] as HTMLAnchorElement;
-                            const shopingSiteBaseUrl = 'https://zalando.fr';  // TODO -- db
-                            robotScrapingGetResourceByUrlRequest.url = shopingSiteBaseUrl.concat(pageDetailUrl.pathname);
-                            console.log(robotScrapingGetResourceByUrlRequest.url);
-                            
-                            const asyncResponse3 = await this.getResourceByUrl(robotScrapingGetResourceByUrlRequest);
-                            if(asyncResponse3) {
-
-                              const article = new Article();
-
-                              // resource (10)
-                              const articleData = this.getElementById(asyncResponse3, 'z-vegas-pdp-props') // TODO -- db
-                              
-                              // get element : brand
-                              const brandMatch = this.getElementByRegexp(articleData.innerHTML, new RegExp(/"brand":{"name":"(.+?)","code"/, 'img')); // TODO -- db
-                              if(brandMatch && Array.isArray(brandMatch) && brandMatch.length >= 1) {
-                                console.log('brand : ', brandMatch[1]);
-                                article.brand = brandMatch[1];
-                              }
-
-                              // get element : description
-                              const descriptionMatch = this.getElementByRegexp(articleData.innerHTML, new RegExp(/"name":"(.+?)","color"/, 'i')); // TODO -- db
-                              if(descriptionMatch && Array.isArray(descriptionMatch) && descriptionMatch.length >= 1) {
-                                console.log('description : ', descriptionMatch[1]);
-                                article.description = descriptionMatch[1];
-                              }
-
-                              // get element : price
-                              const priceMatch = this.getElementByRegexp(articleData.innerHTML, new RegExp(/"price":{"currency":"EUR","value":([0-9.]+?),/, 'img')); // TODO -- db
-                              if(priceMatch && Array.isArray(priceMatch) && priceMatch.length >= 1) {
-                                console.log('price : ', Number.parseFloat(priceMatch[1].replace(',','.'))); 
-                                  article.price = Number.parseFloat(priceMatch[1].replace(',','.'));
-                              }
-
-                              // get element : shopping url
-                              const shoppingUrl = robotScrapingGetResourceByUrlRequest.url;
-                              console.log('shoppingUrl : ',shoppingUrl);
-                              article.shoppingUrl = shoppingUrl;
-
-
-                              // get element : color
-                              const colorMatch = this.getElementByRegexp(articleData.innerHTML, new RegExp(/"color":"(.+?)","silhouette_code"/, 'img')); // TODO -- db
-                              console.log('color : ', colorMatch[1]);
-                              article.color = colorMatch[1];
-
-                              // get element : sizes
-                              const sizes = this.getElementsByRegexp(articleData.innerHTML, new RegExp(/"size":{"local":"(\w+)","local_type"/,'img'), true); // TODO -- db
-                              console.log('sizes : ', sizes.join(' | '));
-                              article.sizes = sizes;
-
-                              // get element : imgs
-                              let imgs = this.getElementsByRegexp(articleData.innerHTML, new RegExp(/"zoom":"(([\d\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.])+)"}}/, 'img'), true); // TODO -- db
-                              // only frist 5 elements
-                              imgs = imgs.splice(0,5);
-                              console.log('imgs : ', imgs.join(' ====== '));
-                              article.images = imgs;
-                              // TODO : A supprimer
-                              article.imgUrl = imgs[3];
-                              if(imgs.length < 4) {
-                                article.imgUrl = imgs[0];
-                              }
-
-                              // send article
-                              this.newArticleFounded(article);
-
-                              // save article on db
-                              const addArticleRequest = new AddArticleRequest();
-                              addArticleRequest.article = article;
-                              this.articleService.addArticle(addArticleRequest).subscribe(
-                                response => console.log('succes add'+ article.id),
-                                error => console.log('error add')
-                              );
-                            }
-
-                          }
-                        }
-
-                    }
-
-                  }
-
-                }
-
-              }
-              
-          }
-      }
-
-    });    
-  }
 
   newArticleFounded(article: Article) {
     this.newArticleFoundedSubject.next(article);

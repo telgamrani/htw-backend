@@ -1,34 +1,3 @@
-<!-- TODO A SUPPRIMER / REVOIR -->
-<!-- <div class="form-group">
-    <input #fileImageArticle type="file" (change)="onFileImageArticle($event)" style="display: none" accept=".png, .jpg, .jpeg">
-    <button type="submit" (click)="fileImageArticle.click()" class="btn btn-warning mb-2">Importer image article {{lookArticleAssociationType | lowercase }} {{rank}}</button>
-    {{fileImageArticle.value | slice:0:40 }}
-    <img width="120" height="120" *ngIf="imageArticlePath" [src]="imageArticlePath"/>
-</div>
-<div class="form-group">
-    <input type="text" [(ngModel)]="article.brand" class="form-control" placeholder="Marque">
-    {{article.brand}}
-</div>
-<div class="form-group">
-    <input type="number" [(ngModel)]="article.price" class="form-control" placeholder="Price">
-    {{article.price}}
-</div>
-<div class="form-group">
-    <input type="text" [(ngModel)]="article.shoppingSiteName" class="form-control" placeholder="Shopping site name">
-    {{article.shoppingSiteName}}
-</div>
-<div class="form-group">
-    <input type="text" [(ngModel)]="article.shoppingUrl" class="form-control" placeholder="Shopping url">
-    {{article.shoppingUrl}}
-</div>
-<div class="form-group">
-    <input type="text" [(ngModel)]="article.description" class="form-control" placeholder="Description">
-    {{article.description}}
-</div>
-<div class="form-group">
-    <button type="button" (click)="onSave()" class="btn btn-primary btn-lg btn-block">Enregister</button>
-</div> -->
-
 <div class="form-group">
     <input type="number" class="form-control" [(ngModel)]="articleId" placeholder="article id">
 </div>
@@ -36,3 +5,23 @@
     <button type="button" (click)="onSearch()" class="btn btn-primary btn-lg btn-block">Chercher et ajouter</button>
     <button type="button" (click)="onSave()" class="btn btn-success btn-lg btn-block">Valider</button>
 </div>
+
+<!-- choice principal image-->
+<ng-container *ngIf="article">
+    <select class="custom-select" 
+            (change)="onSelectPrincipalImageChange($event.target.value)"
+            *ngIf="article && 
+                article.images && 
+                article.images.length">
+                
+                <option *ngFor="let image of article.images; let index = index " 
+                        [attr.selected]="article.indexImagePrincipal === index"
+                        [value]="index">
+                            {{index}}   
+                </option>
+    </select>
+    <!-- article.indexImagePrincipal > -1 : indexImagePrincipal can be 0-->
+    <div class="indexImagePrincipal" *ngIf="article.indexImagePrincipal > -1">
+        <img width="75%" height="50%" [src]="article.images[article.indexImagePrincipal]" />
+    </div>
+</ng-container>
